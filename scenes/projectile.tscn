@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://offbmeymrmn0"]
+
+[ext_resource type="Texture2D" uid="uid://vjxibhn7l6bb" path="res://assets/spell_em_up001.png" id="1_c8fcr"]
+[ext_resource type="Script" uid="uid://bsydf58eb3t2m" path="res://scenes/Projectile.cs" id="1_q3m7n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3m7n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_softn"]
+atlas = ExtResource("1_c8fcr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6q2a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_softn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="basic spell" type="Area2D" unique_id=2034344828 groups=["PlayerProjectile"]]
+script = ExtResource("1_q3m7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2073806849]
+shape = SubResource("CircleShape2D_q3m7n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=701819796]
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_6q2a6")

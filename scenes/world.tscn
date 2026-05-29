@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://chnhatie3e6wb"]
+
+[ext_resource type="Script" uid="uid://dlm7kouv6i7n" path="res://scenes/Background.cs" id="1_k0juu"]
+[ext_resource type="Texture2D" uid="uid://n5j0f13mcbga" path="res://assets/background/orig_big.png" id="1_nnsk1"]
+[ext_resource type="Script" uid="uid://bbcf8u0dct474" path="res://scenes/World.cs" id="1_qfnet"]
+[ext_resource type="PackedScene" uid="uid://c1dxfcvlehgkq" path="res://scenes/player.tscn" id="3_k0juu"]
+[ext_resource type="Script" uid="uid://03um2r4jl1cn" path="res://scenes/EnemyManager.cs" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://b63cehi5oyp7f" path="res://scenes/skull.tscn" id="6_qfnet"]
+
+[node name="world" type="Node2D" unique_id=1432638752]
+script = ExtResource("1_qfnet")
+
+[node name="background" type="Node2D" parent="." unique_id=1530178322]
+script = ExtResource("1_k0juu")
+
+[node name="TextureRect" type="TextureRect" parent="background" unique_id=328999025]
+offset_left = -812.0
+offset_top = 639.0
+offset_right = 5887.546
+offset_bottom = 1942.5933
+rotation = -1.5707964
+texture = ExtResource("1_nnsk1")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="player" parent="." unique_id=1038630185 instance=ExtResource("3_k0juu")]
+position = Vector2(198, 566)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1545165555]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=229800433]
+offset_left = 303.0
+offset_top = 597.0
+offset_right = 395.0
+offset_bottom = 620.0
+
+[node name="enemy manager" type="Node2D" parent="." unique_id=1161325512]
+script = ExtResource("5_71j4m")
+EnemyScene = ExtResource("6_qfnet")
+
+[node name="Timer" type="Timer" parent="enemy manager" unique_id=891099247]
+wait_time = 2.0
+autostart = true

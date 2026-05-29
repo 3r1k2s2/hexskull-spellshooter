@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://q1j5nbf5n4sl"]
+
+[ext_resource type="Texture2D" uid="uid://vjxibhn7l6bb" path="res://assets/spell_em_up001.png" id="1_d2qol"]
+[ext_resource type="Script" uid="uid://b5poq5p7hi8wn" path="res://scenes/EnemyBullet.cs" id="1_qx7rs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx7rs"]
+atlas = ExtResource("1_d2qol")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38r62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx7rs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ckxic"]
+radius = 6.0827627
+
+[node name="enemy bullet" type="Area2D" unique_id=1068037392 groups=["Enemy"]]
+script = ExtResource("1_qx7rs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=817471268]
+sprite_frames = SubResource("SpriteFrames_38r62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1159080331]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ckxic")

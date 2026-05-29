@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c1dxfcvlehgkq"]
+
+[ext_resource type="Texture2D" uid="uid://vjxibhn7l6bb" path="res://assets/spell_em_up001.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://blhyp80yt5ynd" path="res://scenes/Player.cs" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://cb11xb515kju8" path="res://assets/Health Bar.png" id="3_qhqgy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 9.219544
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(12960, 0, 1440, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuyoq"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjrip"]
+bg_color = Color(0.24839999, 0.3155601, 0.92, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 8.0
+
+[node name="player" type="Area2D" unique_id=571948307]
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1064182928]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1448069514]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_dqkch")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1364547016]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1660423476]
+position = Vector2(49.00001, 581.15625)
+scale = Vector2(0.11336806, 0.25578126)
+sprite_frames = SubResource("SpriteFrames_qlg0r")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=489254860]
+offset_left = 13.125795
+offset_top = 576.0972
+offset_right = 94.368866
+offset_bottom = 583.8542
+theme_override_styles/background = SubResource("StyleBoxFlat_tuyoq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fjrip")
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1973530278]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1529169504]
+shape = SubResource("CircleShape2D_qhqgy")
+debug_color = Color(0.95072335, 0.1634559, 0.3926843, 0.41960785)
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered2"]

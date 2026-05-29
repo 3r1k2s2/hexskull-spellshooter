@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b63cehi5oyp7f"]
+
+[ext_resource type="Texture2D" uid="uid://vjxibhn7l6bb" path="res://assets/spell_em_up001.png" id="1_1bx6h"]
+[ext_resource type="Script" uid="uid://bkkr5w0bvq247" path="res://scenes/Skull.cs" id="1_sco77"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sco77"]
+atlas = ExtResource("1_1bx6h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pa1hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sco77")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sco77"]
+
+[node name="skull" type="Area2D" unique_id=15200095]
+script = ExtResource("1_sco77")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=272628465]
+sprite_frames = SubResource("SpriteFrames_pa1hf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1362092830]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_sco77")
+
+[node name="Timer" type="Timer" parent="." unique_id=180016755]
+wait_time = 2.229
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
